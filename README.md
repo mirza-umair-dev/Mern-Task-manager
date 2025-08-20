@@ -14,7 +14,7 @@
     A full-featured Task Management application built with the MERN stack that also supports team collaboration with admin and users features. Create, manage, and track your tasks with a clean and intuitive user interface.
     <br />
     <br />
-    <a href="(https://mern-task-manager-zjr9.vercel.app/)"><strong>View Live Demo »</strong></a>
+    <a href="https://mern-task-manager-zjr9.vercel.app"><strong>View Live Demo »</strong></a>
     <br />
     <br />
     <a href="https://github.com/mirza-umair-dev/Mern-Task-manager/issues">Report Bug</a>
