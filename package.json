@@ -1,0 +1,21 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/mirza-umair-dev/Mern-Task-manager#readme",
+  "bugs": {
+    "url": "https://github.com/mirza-umair-dev/Mern-Task-manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mirza-umair-dev/Mern-Task-manager.git"
+  },
+  "license": "ISC",
+  "author": "Mirza Umair",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
