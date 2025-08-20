@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://task-manager-backend-production-d4ae.up.railway.app";
 
 export const API_PATHS = {
     AUTH:{
