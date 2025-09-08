@@ -89,7 +89,7 @@ const TaskDetails = () => {
 
                   <div className='mt-6 bg-blue-50 p-4 border border-blue-200 rounded-lg'>
                     <h2 className='font-bold'>Assigned Team Members ({task.assignedTo.length})</h2>
-                    <div className='grid grid-cols-2 gap-2 py-2'>
+                    <div className='grid lg:grid-cols-2 grid-cols-1 gap-2 py-2'>
                       {task.assignedTo?.map((user, index) => (
                         <div key={index} className='flex items-center gap-3 bg-white rounded-lg px-2 py-2 border border-blue-200 shadow'>
                           <div className='w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center'>{user?.name?.charAt(0).toUpperCase()}</div>
