@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
 body{
+    width:100vw;
+    height:100vh;
+    overflow-x:hidden;
     @apply bg-gray-50 text-gray-900 font-sans;
 }
