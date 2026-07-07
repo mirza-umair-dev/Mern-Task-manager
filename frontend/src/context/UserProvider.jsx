@@ -47,6 +47,7 @@ const UserProvider = ({ children }) => {
         clearUser();
       } finally {
         setloading(false);
+        console.log(user)
       }
     };
     fetchUser();

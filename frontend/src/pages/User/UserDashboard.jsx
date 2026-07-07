@@ -16,6 +16,7 @@ const UserDashboard = () => {
   const { user, getStatusIcon, getPriorityColor } = useContext(UserContext);
   const [dasshboardData, setdasshboardData] = useState('');
   const [taskData, settaskData] = useState('')
+  const [loading, setloading] = useState(true);
 
   const fetchdasshboardData = async () => {
     const response = await axiosInstance.get(API_PATHS.TASKS.GET_USER_DASHBOARD_DATA);
@@ -29,8 +30,12 @@ const UserDashboard = () => {
   }
   useEffect(() => {
 
-    fetchdasshboardData();
-    fetchTaskData();
+    const loadData = async () => {
+      setloading(true);
+      await Promise.all([fetchdasshboardData(), fetchTaskData()]);
+      setloading(false);
+    }
+    loadData();
   }, [])
 
   return (
@@ -42,8 +47,14 @@ const UserDashboard = () => {
             <span className='text-sm text-gray-600'>{moment().format('LL')}</span>
           </div>
 
+          {loading &&
+            (
+              <div className='flex justify-center items-center py-10'>
+                <span className='text-sm text-gray-500'>Loading dashboard...</span>
+              </div>
+            )}
 
-          {dasshboardData?.stats &&
+          {!loading && dasshboardData?.stats &&
             (
               <div className='px-2 py-2 bg-white border-gray-200 border shadow-md rounded-lg'>
                 <div className='grid lg:grid-cols-4 gap-4 grid-cols-2'>
@@ -58,7 +69,7 @@ const UserDashboard = () => {
             )}
 
 
-          {dasshboardData?.charts &&
+          {!loading && dasshboardData?.charts &&
             (
               <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 mt-6 p-2'>
                 <StatusPieChart data={dasshboardData.charts.statusChart} className='w-full h-full' />
@@ -71,7 +82,7 @@ const UserDashboard = () => {
           }
 
 
-          {taskData?.length > 0 && (
+          {!loading && taskData?.length > 0 && (
             <div className="bg-white rounded-lg border border-gray-200 mt-6">
               <div className="p-6 border-b border-gray-200 flex justify-between">
                 <h3 className="text-lg font-semibold text-gray-900">Recent Tasks</h3>

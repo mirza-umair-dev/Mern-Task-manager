@@ -14,27 +14,29 @@ const Sidebar = () => {
     
   }
   return (
-    <div className='flex flex-col px-3 py-6 bg-gray-50 '>
+    <div className='flex flex-col px-3 py-6 bg-gray-50 h-full border-r border-gray-100'>
 
-      <div className='flex items-center flex-col gap-4'>
-        <div className='w-16 h-16 rounded-full flex items-center justify-center'>
+      <div className='flex items-center flex-col gap-4 pb-6 border-b border-gray-200'>
+        <div className='w-16 h-16 rounded-full flex items-center justify-center ring-2 ring-offset-2 ring-blue-100'>
           {user?.user.profileImgUrl ? (
             <img
             src={user.user.profileImgUrl}
             alt="Profile"
-            className="w-16 h-16 object-cover rounded-full shadow"
-          />) : (<FaRegCircleUser className='text-6xl drop-shadow' />)}
+            className="w-16 h-16 object-cover rounded-full shadow-sm"
+          />) : (<div className='font-bold text-3xl w-16 h-16 text-green-700 bg-green-100 flex items-center justify-center rounded-full shadow-sm'>
+            {user.user.name[0].toUpperCase()}
+          </div>)}
         </div>
-        <div className='flex flex-col items-center justify-center'>
-          {user?.user.role === 'admin' ? <h5 className='bg-blue-400 rounded text-xs text-white px-1 py-1' > Admin</h5> : <h5 className='bg-gray-200 rounded px-1 py-1 text-center text-gray-950'>User</h5>}
-          <h3 className='text-md font-semibold'>{user?.user.name}</h3>
-          <p className='text-gray-500 text-xs'>{user?.user.email}</p>
+        <div className='flex flex-col items-center justify-center gap-1'>
+          {user?.user.role === 'admin' ? <h5 className='bg-blue-500 rounded-full text-[10px] font-semibold tracking-wide uppercase text-white px-3 py-1' > Admin</h5> : <h5 className='bg-gray-200 rounded-full text-[10px] font-semibold tracking-wide uppercase px-3 py-1 text-center text-gray-600'>User</h5>}
+          <h3 className='text-md font-semibold text-gray-900'>{user?.user.name}</h3>
+          <p className='text-gray-400 text-xs'>{user?.user.email}</p>
         </div>
       </div>
 
 
 
-      <div className='flex flex-col gap-2 mt-2'>
+      <div className='flex flex-col gap-1 mt-4'>
 
       {user?.user.role === 'admin' ? 
       (
@@ -45,10 +47,10 @@ const Sidebar = () => {
               <button
                 key={index}
                 onClick={handleLogout}
-                className='flex items-center gap-4 px-2 py-3 rounded-md hover:shadow hover:bg-red-100 text-red-600 hover:text-red-800 transition duration-300'
+                className='flex items-center gap-4 px-3 py-3 mt-4 rounded-md hover:bg-red-50 text-red-500 hover:text-red-700 active:scale-[0.98] transition-all duration-200'
               >
-                <Icon className='text-2xl' />
-                <span className='text-lg font-semibold'>{item.title}</span>
+                <Icon className='text-xl' />
+                <span className='text-sm font-medium'>{item.title}</span>
               </button>
             );
           }
@@ -59,10 +61,16 @@ const Sidebar = () => {
             <NavLink
               key={index}
               to={item.path}
-              className=' flex items-center gap-4 px-2 py-3  rounded-lg hover:text-blue-600 hover:bg-linear-to-r from-blue-50 to-blue-200 transition duration-300'
+              className={({ isActive }) =>
+                `flex items-center gap-4 px-3 py-2.5 rounded-lg transition-all duration-200 active:scale-[0.98] ${
+                  isActive
+                    ? 'bg-blue-50 text-blue-600 shadow-sm font-semibold'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/60'
+                }`
+              }
             >
-              <Icon className='text-2xl' />
-              <span className='text-lg font-semibold'>{item.title}</span>
+              <Icon className='text-xl' />
+              <span className='text-sm font-medium'>{item.title}</span>
             </NavLink>
           )
         })
@@ -76,10 +84,10 @@ const Sidebar = () => {
               <button
                 key={index}
                 onClick={handleLogout}
-                className='flex items-center gap-4 px-2 py-3 rounded-md hover:shadow hover:bg-red-100 text-red-600 hover:text-red-800 transition duration-300'
+                className='flex items-center gap-4 px-3 py-3 mt-4 rounded-md hover:bg-red-50 text-red-500 hover:text-red-700 active:scale-[0.98] transition-all duration-200'
               >
-                <Icon className='text-2xl' />
-                <span className='text-lg font-semibold'>{item.title}</span>
+                <Icon className='text-xl' />
+                <span className='text-sm font-medium'>{item.title}</span>
               </button>
             );
           }
@@ -90,10 +98,16 @@ const Sidebar = () => {
             <NavLink
               key={index}
               to={item.path}
-              className=' flex items-center gap-4 px-2 py-3  rounded-lg hover:text-blue-600 hover:bg-linear-to-r from-blue-50 to-blue-200 transition duration-300'
+              className={({ isActive }) =>
+                `flex items-center gap-4 px-3 py-2.5 rounded-lg transition-all duration-200 active:scale-[0.98] ${
+                  isActive
+                    ? 'bg-blue-50 text-blue-600 shadow-sm font-semibold'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/60'
+                }`
+              }
             >
-              <Icon className='text-2xl' />
-              <span className='text-lg font-semibold'>{item.title}</span>
+              <Icon className='text-xl' />
+              <span className='text-sm font-medium'>{item.title}</span>
             </NavLink>
           )
         })

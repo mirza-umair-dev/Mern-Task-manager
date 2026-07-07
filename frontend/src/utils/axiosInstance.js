@@ -38,10 +38,6 @@ const axiosInstance = axios.create({
                 else if(error.response.status === 500) {
                     console.error("Server errro please try again later")
                 }
-                else if (error.code === "ECONNABORTED"){
-                    console.error("Request timeout. Please try again")
-                }
-                console.error(error)
 
             }
             return Promise.reject(error);

@@ -14,12 +14,12 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const { user,getStatusIcon , getPriorityColor } = useContext(UserContext);
-  const [dasshboardData, setdasshboardData] = useState('');
+  const [dashboardData, setdashboardData] = useState('');
   const [taskData, settaskData] = useState('')
 
-  const fetchdasshboardData = async () => {
+  const fetchdashboardData = async () => {
     const response = await axiosInstance.get(API_PATHS.TASKS.GET_DASHBOARD_DATA);
-    setdasshboardData(response.data);
+    setdashboardData(response.data);
   }
 
   const fetchTaskData = async () => {
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   }
    useEffect(() => {
 
-    fetchdasshboardData();
+    fetchdashboardData();
     fetchTaskData();
   }, [])
 
@@ -42,25 +42,25 @@ const AdminDashboard = () => {
           </div>
 
           
-            {dasshboardData?.stats &&
+            {dashboardData?.stats &&
               (
                 <div className='px-2 py-2 bg-white border-gray-200 border shadow-md rounded-lg'>
                 <div className='grid lg:grid-cols-4 gap-4 grid-cols-2'>
-                  <TaskStatusBox text={'Total Tasks'} count={dasshboardData.stats.totalTasks} bgColor={'bg-blue-500'} />
-                  <TaskStatusBox text={'Completed Tasks'} count={dasshboardData.stats.completedTasks} bgColor={'bg-green-500'} />
-                  <TaskStatusBox text={'Pending Tasks'} count={dasshboardData.stats.pendingTasks} bgColor={'bg-red-500'} />
-                  <TaskStatusBox text={'In-Progress Tasks'} count={dasshboardData.stats.inProgressTasks} bgColor={'bg-purple-500'} />
+                  <TaskStatusBox text={'Total Tasks'} count={dashboardData.stats.totalTasks} bgColor={'bg-blue-500'} />
+                  <TaskStatusBox text={'Completed Tasks'} count={dashboardData.stats.completedTasks} bgColor={'bg-green-500'} />
+                  <TaskStatusBox text={'Pending Tasks'} count={dashboardData.stats.pendingTasks} bgColor={'bg-red-500'} />
+                  <TaskStatusBox text={'In-Progress Tasks'} count={dashboardData.stats.inProgressTasks} bgColor={'bg-purple-500'} />
 
                 </div>
                 </div>
               )}
           
 
-          {dasshboardData?.charts &&
+          {dashboardData?.charts &&
             (
               <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 p-4'>
-                <StatusPieChart data={dasshboardData.charts.statusChart} className='w-full h-full' />
-                <DailyBarChart data={dasshboardData.charts.dailyChart}  className='w-full h-full' />
+                <StatusPieChart data={dashboardData.charts.statusChart} className='w-full h-full' />
+                <DailyBarChart data={dashboardData.charts.dailyChart}  className='w-full h-full' />
               </div>
 
 
